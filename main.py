@@ -11,6 +11,9 @@ from fastapi.responses import FileResponse
 from app.utils.file_extractor import extract_text_from_bytes
 from app.utils.text_analyzer import analyze_resume_text
 
+# from utils.file_extractor import extract_text_from_bytes
+# from utils.text_analyzer import analyze_resume_text
+
 BASE_DIR = Path(__file__).resolve().parent
 STATIC_DIR = BASE_DIR / "static"
 
