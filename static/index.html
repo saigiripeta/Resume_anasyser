@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resume Analyzer UI</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Resume Analyzer</h1>
+    <p>Upload a resume (PDF, DOCX, or TXT) and see a detailed, tabular analysis.</p>
+
+    <form id="analyzeForm">
+      <div class="form-group">
+        <label for="resumeFile">Resume file:</label>
+        <input
+          type="file"
+          id="resumeFile"
+          name="file"
+          accept=".pdf,.docx,.txt"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="targetDepartment">Target Department (optional):</label>
+        <input
+          type="text"
+          id="targetDepartment"
+          name="target_department"
+          placeholder="e.g., English, Computer Science"
+        />
+      </div>
+
+      <button type="submit" id="analyzeButton">Analyze Resume</button>
+    </form>
+
+    <div id="status"></div>
+
+    <div id="resultsContainer" style="display: none;">
+      <h2>Summary</h2>
+      <table class="result-table">
+        <tbody>
+          <tr><th>Name</th><td id="resName"></td></tr>
+          <tr><th>Email</th><td id="resEmail"></td></tr>
+          <tr><th>Phone</th><td id="resPhone"></td></tr>
+          <tr><th>Current Location</th><td id="resLocation"></td></tr>
+          <tr><th>Current Organization</th><td id="resOrg"></td></tr>
+
+          <tr><th>Teaching Experience (years)</th><td id="resTeachExp"></td></tr>
+          <tr><th>Industry Experience (years)</th><td id="resIndExp"></td></tr>
+          <tr><th>Other Experience (years)</th><td id="resOtherExp"></td></tr>
+          <tr><th>Total Experience (years)</th><td id="resTotalExp"></td></tr>
+
+          <tr><th>Has PhD</th><td id="resHasPhd"></td></tr>
+          <tr><th>PhD Start Year</th><td id="resPhdStartYear"></td></tr>
+          <tr><th>PhD End/Passing Year</th><td id="resPhdEndYear"></td></tr>
+          <tr><th>Highest Degree</th><td id="resHighestDegree"></td></tr>
+          <tr><th>Department</th><td id="resDepartment"></td></tr>
+          <tr><th>Score</th><td id="resScore"></td></tr>
+
+          <tr><th>Total Publications (from list)</th><td id="resPubTotal"></td></tr>
+          <tr><th>Research Articles (journals etc.)</th><td id="resArticles"></td></tr>
+          <tr><th>Books / Book Chapters</th><td id="resBooks"></td></tr>
+          <tr><th>Conference / Seminar Papers</th><td id="resConfs"></td></tr>
+        </tbody>
+      </table>
+
+      <h2>Degree Details</h2>
+      <table class="result-table" id="degreesTable">
+        <thead>
+          <tr>
+            <th>Degree</th>
+            <th>Field of Study</th>
+            <th>Institution</th>
+            <th>Start Year</th>
+            <th>End / Passing Year</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+
+      <h3>Detected Degree Types</h3>
+      <ul id="resDegreesList"></ul>
+
+      <h3>Fields of Study</h3>
+      <ul id="resFieldsList"></ul>
+
+      <h2>Raw JSON</h2>
+      <table class="single-col-table">
+        <thead>
+          <tr><th>Raw JSON</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <textarea id="output" readonly></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Extracted Text</h2>
+    <table class="single-col-table">
+      <thead>
+        <tr><th>Extracted Text</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <textarea id="extractedText" readonly></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
